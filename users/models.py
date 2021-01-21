@@ -1,0 +1,50 @@
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+
+class User(AbstractUser):
+
+    """ Custom User Model """
+
+    GENDER_MALE = "male"
+    GENDER_FEMALE = "female"
+    GENDER_OTHER = "other"
+
+    # 2D Tuple
+    GENDER_CHOICES = (
+        (GENDER_MALE, "Male"),
+        (GENDER_FEMALE, "Female"),
+        (GENDER_OTHER, "Other"),
+    )
+
+    LANGUAGE_ENGLISH = "en"
+    LANGUAGE_KOREAN = "ko"
+
+    LANGUAGE_CHOICES = (
+        (LANGUAGE_ENGLISH, "English"),
+        (LANGUAGE_KOREAN, "Korean"),
+    )
+
+    CURRENCY_USD = "usd"
+    CURRENCY_KRW = "krw"
+
+    CURRENCY_CHOICES = (
+        (CURRENCY_USD, "USD"),
+        (CURRENCY_KRW, "KRW"),
+    )
+
+    # null= : DB / blank= : form(required check)
+    avatar = models.ImageField(upload_to="avatars",blank=True)
+    gender = models.CharField(
+        choices=GENDER_CHOICES, default=GENDER_OTHER, max_length=10, blank=True
+    )
+    bio = models.TextField(default="", blank=True)
+    birthdate = models.DateField(blank=True, null=True)
+    language = models.CharField(
+        choices=LANGUAGE_CHOICES, default=LANGUAGE_ENGLISH, max_length=2, blank=True
+    )
+    currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, blank=True)
+    superhost = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.username
