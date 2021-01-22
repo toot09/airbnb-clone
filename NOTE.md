@@ -141,4 +141,5 @@ To do this, just add a management/commands directory to the application.
 # Install Django-seed
 1. pipenv install django_seed
 2. Add django_seed to INSTALLED_APPS(settings.py)
-** Reference : users/seed_users.py
+** Reference : rooms/seed_rooms.py
+3. Reference Faker : https://faker.readthedocs.io/en/master/index.html
