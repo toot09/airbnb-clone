@@ -9,6 +9,7 @@ wheel = "*"
 black = "*"
 pillow = "*"
 django-countries = "*"
+django-seed = "*"
 
 [dev-packages]
 black = "*"

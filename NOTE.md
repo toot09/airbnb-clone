@@ -2,13 +2,15 @@
 pip install pipenv
 
 # Install virtual space (ver 3.X) : cd [Project dir]
-pipenv --three
+pipenv --three (on Windows) 
+pipenv --python 3.7 (on Mac)
+ : In my case, 3.9 Didn't work on Mac
 
 # Enter virtual space
 pipenv shell
 
 # Install Django (This project installed 2.2.5)
-pip install Django==2.2.5
+pipenv install Django==2.2.5
 
 # Check complete install
 django-admin
@@ -127,3 +129,16 @@ def save(self, *args, **kwargs):
         do_something()
         super().save(*args, **kwargs)  # Call the "real" save() method.
         do_something_else()
+
+# Custom Django-admin Command
+doc url : https://docs.djangoproject.com/en/2.2/howto/custom-management-commands/
+To do this, just add a management/commands directory to the application.
+
+# Difference with *args and **args
+1) *args : Tuple
+2) **args : Dictionary
+
+# Install Django-seed
+1. pipenv install django_seed
+2. Add django_seed to INSTALLED_APPS(settings.py)
+** Reference : users/seed_users.py
