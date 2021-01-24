@@ -36,10 +36,26 @@ class Command(BaseCommand):
         #print(create_photos.values()) #2D Array returned
         for pk in flatten(create_photos.values()):
             room = room_models.Room.objects.get(pk=pk)
+            amenity = room_models.Amenity.objects.all()
+            facility = room_models.Facility.objects.all()
+            rule = room_models.HouseRule.objects.all()
             for i in range(3,random.randint(10,17)):
                 room_models.Photo.objects.create(
                     caption=seeder.faker.sentence(),
                     file=f"/room_photos/{random.randint(1,31)}.webp",
                     room=room,
                 )
+            for a in amenity:
+                if random.randint(0,15) % 2 == 0:
+                    #ManytoMany Field add like below(.add)
+                    room.amenity.add(a)
+            for f in facility:
+                if random.randint(0,15) % 2 == 0:
+                    #ManytoMany Field add like below(.add)
+                    room.facility.add(f)
+            for r in rule:
+                if random.randint(0,15) % 2 == 0:
+                    #ManytoMany Field add like below(.add)
+                    room.house_rules.add(r)
+                
         self.stdout.write(self.style.SUCCESS(f"{number} rooms created!"))
