@@ -143,3 +143,8 @@ To do this, just add a management/commands directory to the application.
 2. Add django_seed to INSTALLED_APPS(settings.py)
 ** Reference : rooms/seed_rooms.py
 3. Reference Faker : https://faker.readthedocs.io/en/master/index.html
+
+# Calc date
+Use datetime and timedelta
+1) from datetime import datetime, timedelta
+2) datetime.now()+timedelta(days=random.randint(3,25))
