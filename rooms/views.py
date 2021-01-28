@@ -1,6 +1,10 @@
+from datetime import datetime
 from django.shortcuts import render
-from django.http import HttpResponse
 
 def all_rooms(request):
-    #return HttpResponse(content="hello")
-    return render(request, "all_rooms")
+    now = datetime.now()
+    diet = True
+    return render(request, "all_rooms.html", context={
+        "now" : now,
+        "diet": diet,
+    })

@@ -148,3 +148,15 @@ To do this, just add a management/commands directory to the application.
 Use datetime and timedelta
 1) from datetime import datetime, timedelta
 2) datetime.now()+timedelta(days=random.randint(3,25))
+
+# template Setting
+1) Make templates folder in root path
+2) Setting templates path in settings
+ - settings.py
+ - TEMPLATES -> "DIRS": [os.path.join(BASE_DIR, "{My template folder}")],
+3) Call template at views
+     ex)
+       from django.shortcuts import render
+       def all_rooms(request):
+       #return HttpResponse(content="hello")
+       return render(request, "all_rooms.html")  
