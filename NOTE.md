@@ -160,3 +160,12 @@ Use datetime and timedelta
        def all_rooms(request):
        #return HttpResponse(content="hello")
        return render(request, "all_rooms.html")  
+
+# Install Useful Extension for html and django
+1) HTML Snippet
+2) Django Template
+
+# block (html)
+ is like a window
+# include
+ is include other html (Such as header, footer, slide...)
