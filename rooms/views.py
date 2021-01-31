@@ -22,5 +22,5 @@ def all_rooms(request):
         "rooms" : all_rooms,
         "page" : page,
         "page_count" : page_count,
-        "page_range" : range(1, page_count),
+        "page_range" : range(1, page_count+1),
     })

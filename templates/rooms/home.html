@@ -9,10 +9,15 @@
         <h1>{{room.name}} / {{room.prices}}</h1>
     {% endfor %}
 
-    <h5> page {{page}} of {{page_count}} </h5>
-
-    {% for page in page_range %}
-        <a href="?page={{page}}">{{page}}</a>
-    {% endfor %}
+    <h5>
+        <!-- Use Custom Template tags and filters (https://docs.djangoproject.com/en/2.2/howto/custom-template-tags/) -->
+        {% if page != 1 %}
+            <a href="?page={{page|add:-1}}">Prev</a>
+        {% endif %}
+        page {{page}} of {{page_count}} 
+        {% if page != page_count  %}
+            <a href="?page={{page|add:1}}">Next</a>
+        {% endif %}
+    </h5>
 
 {% endblock content %}
