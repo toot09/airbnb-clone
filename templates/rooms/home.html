@@ -10,14 +10,21 @@
     {% endfor %}
 
     <h5>
-        <!-- Use Custom Template tags and filters (https://docs.djangoproject.com/en/2.2/howto/custom-template-tags/) -->
+        <!-- Use Custom Template tags and filters (https://docs.djangoproject.com/en/2.2/howto/custom-template-tags/) 
         {% if page != 1 %}
             <a href="?page={{page|add:-1}}">Prev</a>
         {% endif %}
-        page {{page}} of {{page_count}} 
-        {% if page != page_count  %}
-            <a href="?page={{page|add:1}}">Next</a>
+        -->
+        
+        <!-- Pagination -->
+        {% if rooms.has_previous %}
+            <a href="?page={{rooms.previous_page_number}}">Prev</a>
         {% endif %}
+        page {{rooms.number}} of {{rooms.paginator.num_pages}} 
+        {% if rooms.has_next %}
+            <a href="?page={{rooms.next_page_number}}">Next</a> 
+        {% endif %}
+        
     </h5>
 
 {% endblock content %}
