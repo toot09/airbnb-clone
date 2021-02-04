@@ -5,7 +5,9 @@
 {% endblock page_name %}
 
 {% block content %}
-    {%for room in page%}
+
+    <!-- Automatically get List as named "object_list" -->
+    {%for room in object_list%}
         <h1>{{room.name}} / {{room.prices}}</h1>
     {% endfor %}
 
@@ -17,12 +19,13 @@
         -->
         
         <!-- Pagination -->
-        {% if page.has_previous %}
-            <a href="?page={{page.previous_page_number}}">Prev</a>
+        <!-- ListView's page_obj : https://docs.djangoproject.com/en/2.2/ref/class-based-views/generic-display/ -->
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.previous_page_number}}">Prev</a>
         {% endif %}
-        page {{page.number}} of {{page.paginator.num_pages}} 
-        {% if page.has_next %}
-            <a href="?page={{page.next_page_number}}">Next</a> 
+        page {{page_obj.number}} of {{page_obj.paginator.num_pages}} 
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">Next</a> 
         {% endif %}
         
     </h5>
