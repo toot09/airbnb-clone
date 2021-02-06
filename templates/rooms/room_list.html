@@ -6,12 +6,15 @@
 
 {% block content %}
 
-    {{now}}
-
     <!-- Automatically get List as named "object_list" -->
     <!-- Set List name to "rooms" (context_object_name) -->
     {%for room in rooms%}
-        <h1>{{room.name}} / {{room.prices}}</h1>
+        <h3>
+            <!-- rooms : app_name(urls.py) / detail : name(urlpatterns) / room.pk : Arguments(pk) -->
+            <a href = "{% url "rooms:detail" room.pk %}">
+                {{room.name}} / {{room.prices}}
+            </a>
+        </h3>
     {% endfor %}
 
     <h5>
