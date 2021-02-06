@@ -5,5 +5,6 @@ from rooms import views as room_views
 app_name = "core"
 
 urlpatterns = [
+    #HomeView is Class. so return use "as_view" for return view shape
     path("",room_views.HomeView.as_view(), name="home"),
 ]

@@ -6,8 +6,11 @@
 
 {% block content %}
 
+    {{now}}
+
     <!-- Automatically get List as named "object_list" -->
-    {%for room in object_list%}
+    <!-- Set List name to "rooms" (context_object_name) -->
+    {%for room in rooms%}
         <h1>{{room.name}} / {{room.prices}}</h1>
     {% endfor %}
 
@@ -19,7 +22,7 @@
         -->
         
         <!-- Pagination -->
-        <!-- ListView's page_obj : https://docs.djangoproject.com/en/2.2/ref/class-based-views/generic-display/ -->
+        <!-- Pagination a ListView : https://docs.djangoproject.com/en/3.1/topics/pagination/ -->
         {% if page_obj.has_previous %}
             <a href="?page={{page_obj.previous_page_number}}">Prev</a>
         {% endif %}
