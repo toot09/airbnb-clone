@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.http import Http404
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from . import models
 
 #Class Based View (CBV)
@@ -23,6 +23,17 @@ class HomeView(ListView):
     #     context["now"] = now
     #     return context
 
+# CBV(Class Based View)
+class RoomDetail(DetailView):
+    
+    """ RoomDetail Definition """
+    model = models.Room
+    # Attributes : http://ccbv.co.uk/projects/Django/3.0/django.views.generic.detail/DetailView/
+    pk_url_kwarg = 'pk'
+
+
+# FBV(Function Based View)
+"""
 def room_detail(request, pk):
     # Parma "pk" received in rooms/urls.py
     try:
@@ -34,4 +45,4 @@ def room_detail(request, pk):
         #return redirect(reverse("rooms:detail",kwargs={"pk":247}))
         #from django.http import Http404
         raise Http404()
-    
+"""
