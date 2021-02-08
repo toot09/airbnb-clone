@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django_countries.fields import CountryField
 from core import models as core_models
 from users import models as user_models
@@ -104,6 +105,13 @@ class Room(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+    # Override Func. "VIEW ON SITE"
+    def get_absolute_url(self):
+        #from django.urls import reverse
+        #app_name(urls.py) / detail : name(urlpatterns) / room.pk : Arguments(pk)
+        return reverse("rooms:detail",kwargs = {"pk":self.pk,})
+
 
     def total_rating(self):
         all_reviews = self.reviews.all()

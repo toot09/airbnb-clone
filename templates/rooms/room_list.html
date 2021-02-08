@@ -12,7 +12,7 @@
         <h3>
             <!-- rooms : app_name(urls.py) / detail : name(urlpatterns) / room.pk : Arguments(pk) -->
             <a href = "{% url "rooms:detail" room.pk %}">
-                {{room.name}} / {{room.prices}}
+                {{room.name}} / ${{room.prices}}
             </a>
         </h3>
     {% endfor %}
