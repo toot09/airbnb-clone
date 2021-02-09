@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
-{% block page_name %}
-    Detail
-{% endblock page_name %}
+{% block page_title %}
+    {{room.name}}
+{% endblock page_title %}
 
 {% block content %}
 <div>
+    <!-- DetailView automatically set object name to models name(room). default : object -->
     <h1>{{object.name}}</h1>
     <h3>{{room.description}}</h3>
 </div>

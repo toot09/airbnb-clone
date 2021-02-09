@@ -35,7 +35,7 @@ class RoomDetail(DetailView):
 # FBV(Function Based View)
 """
 def room_detail(request, pk):
-    # Parma "pk" received in rooms/urls.py
+    # Param "pk" received in rooms/urls.py
     try:
         room = models.Room.objects.get(pk=pk)
         #{'room':room} => content
@@ -46,3 +46,8 @@ def room_detail(request, pk):
         #from django.http import Http404
         raise Http404()
 """
+
+def Search(request):
+    city = request.GET.get("city")
+    print(str.capitalize(city))
+    return render(request, "rooms/search.html", {"city":city})

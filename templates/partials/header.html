@@ -1,5 +1,10 @@
 <header>
 
-    <a href = "{% url "core:home" %}">Home</a>
-
+    <a href = "{% url "core:home" %}">JOneBnB</a>
+    <ul>
+        <li><a href="#">Login</a>
+    </ul>
+    <form method="get" action="{% url "rooms:search" %}">
+        <input name="city" placeholder="Search by City"/>
+    </form>
 </header>
