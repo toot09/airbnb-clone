@@ -169,3 +169,16 @@ Use datetime and timedelta
  is like a window
 # include
  is include other html (Such as header, footer, slide...)
+
+# Get countries 
+For example:
+>>> from django_countries import countries
+>>> dict(countries)['NZ']
+'New Zealand'
+>>> for code, name in list(countries)[:3]:
+...     print(f"{name} ({code})")
+...
+Afghanistan (AF)
+Åland Islands (AX)
+Albania (AL)
+reference : https://github.com/SmileyChris/django-countries#the-country-object

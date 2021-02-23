@@ -3,6 +3,7 @@ from django.http import Http404
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
+from django_countries import countries
 from . import models
 
 #Class Based View (CBV)
@@ -48,6 +49,8 @@ def room_detail(request, pk):
 """
 
 def Search(request):
-    city = request.GET.get("city")
-    print(str.capitalize(city))
-    return render(request, "rooms/search.html", {"city":city})
+    city = request.GET.get("city","anywhere")
+    city = str.capitalize(city)
+    room_types = models.RoomType.objects.all()
+    #Get countries : https://github.com/SmileyChris/django-countries#the-country-object
+    return render(request, "rooms/search.html", {"city":city, "countries":countries, "room_types":room_types})
