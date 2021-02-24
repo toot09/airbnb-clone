@@ -47,10 +47,27 @@ def room_detail(request, pk):
         #from django.http import Http404
         raise Http404()
 """
-
+#Get countries : https://github.com/SmileyChris/django-countries#the-country-object
 def Search(request):
     city = request.GET.get("city","anywhere")
     city = str.capitalize(city)
+    country = request.GET.get("country","KR")
+    room_type = int(request.GET.get("room_type",0))
     room_types = models.RoomType.objects.all()
-    #Get countries : https://github.com/SmileyChris/django-countries#the-country-object
-    return render(request, "rooms/search.html", {"city":city, "countries":countries, "room_types":room_types})
+    
+    form = {
+        "city":city, 
+        "s_country":country, 
+        "s_room_type":room_type,
+    }
+
+    choices = {
+        "countries":countries, 
+        "room_types":room_types,
+    }
+
+    return render(
+        request, 
+        "rooms/search.html", 
+        {**form,**choices,},
+    )
